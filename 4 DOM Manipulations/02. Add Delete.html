@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>List of Items</h1>
+<ul id="items">
+    <li>First<a href="#" onclick="addItem()"> [Delete]</a></li>
+    <li>Second<a href="#" onclick="addItem()"> [Delete]</a></li>
+</ul>
+<input type="text" id="newText"/>
+<input type="button" value="Add"
+       onclick="addItem()">
+<script>
+    function addItem() {
+
+        let inpTxt = document.getElementById('newText').value.trim();
+
+        if (inpTxt !== "") {
+            let newLi = document.createElement('li');
+            newLi.textContent = inpTxt;
+            let aTag = document.createElement('a');
+            aTag.href = "#";
+            aTag.textContent = " [Delete]";
+            newLi.appendChild(aTag);
+            aTag.addEventListener('click', function (event) { // Закачаме към аТаг-а евент // Функцията приема евент. Може и да извикаме
+                // фунцкия ,а не да я пишем тук
+                /*console.log(event); // event е обект
+                console.log(event.target); // Чрез .target ми връща таргека върху който сме кликнали. В случея <a href = "#">
+                // Ако искаме сега да изтрием парента на този аТаг ,т.е. да изтрием Li-то , трябва да го вземем.
+                // Li-то в случея е parent на аТаг-а
+                console.log(event.target.parentNode); // parentNode-a e Li-to в което стои текущия аТаг.*/
+                let liDelete = event.target.parentNode;
+                liDelete.parentNode.removeChild(newLi); // Вземаме парента на Ли-то , което е <ul>. И на него му казваме ,че искаме
+                // да изтрием текущото Li, което му се води child.
+                // aTag e child на newLi. newLi e child на <ul>
+                // <ul> е parent на newLi. newLi е parent на аТаг
+            });
+            document.getElementById('items').appendChild(newLi);
+            document.getElementById('newText').value = null;
+        }
+    }
+</script>
+
+
+</body>
+</html>

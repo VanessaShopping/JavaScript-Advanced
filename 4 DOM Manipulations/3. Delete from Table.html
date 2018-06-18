@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1" id="customers">
+    <tr><th>Name</th><th>Email</th></tr>
+    <tr><td>Eve</td><td>eve@gmail.com</td></tr>
+    <tr><td>Nick</td><td>nick@yahooo.com</td></tr>
+    <tr><td>Didi</td><td>didi@didi.net</td></tr>
+    <tr><td>Tedy</td><td>tedy@tedy.com</td></tr>
+</table>
+Email: <input type="text" name="email" />
+<button onclick="deleteByEmail()">Delete</button>
+<div id="result" />
+
+<script>
+    function deleteByEmail() {
+        let inputEmail = document.getElementsByName('email')[0].value; // Връща обект тип NodeList. Нулевия елемент е целия input element
+        // Ако имаме други елементи със същото name="name" ще ги вземем всчиките ,като първия ще е на позиция 0 ,втория на позиция 1....
+        // .value вземаме съдържанието на този елемент . value понеже е input поле. Ако е друг вид поле -> .textContent
+        // console.log(inputEmail[0].value);
+
+        let allRows = document.getElementById('customers').children[0].children;
+        // console.log(allRows); // връща цялата таблица   <table border="1"....>
+        // console.log(allRows.children); //Вземаме children-а на таблицата и ни връща бодито на таблицата <tbody>
+        // Връща ни htmlCollection като на позиция [0] e <tbody> . Цялото тяло на таблицата.
+        // Ако имаме и другите бодита ще са на позиция 1,2,3...
+        // console.log(allRows.children[0].children); // таблицата.тбоди[0].тр  Връща всички редове от бодито на таблицата
+
+
+        for (let i = 0; i < allRows.length; i++) {
+            let currentEmail = allRows[i].children[1].textContent;
+            if (currentEmail === inputEmail){
+                allRows[i].parentNode.removeChild(allRows[i]);
+                document.getElementById('result').textContent = "Deleted.";
+                return;
+            }
+            
+        }
+
+        /*НЕ РАБОТИ В ДЖЪДЖ*/
+/*
+        for (let tr of  allRows) {
+            let currentEmail = tr.children[1].textContent; // от реда вземи детето ,т.е. <td>-то , което е на позиция 1
+            // на позиция 0 са имената , на позиция 1 са имейлите.
+            console.log(currentEmail);
+            console.log(inputEmail);
+            if (currentEmail === inputEmail){
+                tr.parentNode.removeChild(tr);
+                document.getElementById('result').textContent = "Deleted.";
+                return;
+            }
+        }
+
+*/
+        document.getElementById('result').textContent = "Not found.";
+
+    }
+
+
+</script>
+</body>
+</html>

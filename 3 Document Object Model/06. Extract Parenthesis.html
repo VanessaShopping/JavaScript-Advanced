@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="content">Rakiya (Bulgarian brandy) is home-made liquor (alcoholic drink). It can be made of grapes,
+plums or other fruits (even apples).(ala bala)</p>
+<button onclick="extract('content')">Extract</button>
+<br>
+<textarea name="" id="result" cols="80" rows="10"></textarea>
+<script>
+    function extract(id) {
+        // console.log(id); // id=content , при клик на бутона вика функцията с ид-то на параграфа
+        let text = document.getElementById(id).textContent; // getElementById - връща обект // .textContent връща стринг
+        let regexPattern = /\([a-zA-z]+\s*[a-zA-Z]*\)/g;
+        let arrResult = text.match(regexPattern);
+        let result = [];
+        // console.log(arrResult);
+        for (let el of arrResult) {
+            result.push(el.substr(1, el.length-2));
+            // console.log(el.substr(1, el.length-2));
+            // console.log(el);
+        }
+        // console.log(result.join("; "));
+        // arrResult = arrResult.join("; ");
+        // console.log(arrResult);
+        result = result.join('; ');
+        document.getElementById('result').innerHTML = result;
+    }
+</script>
+</body>
+</html>
+
+<!-- Горната фунцкия не върви в джъдж
+
+function extractParenthesis(targetId) {
+let element = document.getElementById(targetId).textContent;
+let regex = /\((.*?)\)/g;
+let match = regex.exec(element);
+let matches = [];
+while (match){
+matches.push(match[1]);
+match = regex.exec(element);
+}
+return matches.join('; ');
+
+}-->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr><th>Name</th><th>Town</th></tr>
+    <tr><td>Eve</td><td>Sofia</td></tr>
+    <tr><td>Nick</td><td>Varna</td></tr>
+    <tr><td>Didi</td><td>Ruse</td></tr>
+    <tr><td>Tedy</td><td>Varna</td></tr>
+</table>
+<button onclick="colorize()">Colorize</button>
+<script>
+    function colorize() {
+        // TODO
+        let table = document.getElementsByTagName('table'); // Връща HTML Collection в която на [0] стой обект който е цялия <table>
+        // table = table[0];
+        let tableTwo = document.querySelectorAll('table'); // Връща Node List. И в двата случея на [0] стой обекта <table>
+        //tableTwo = tableTwo[0];
+
+        let tableThree = document.querySelectorAll('table tr'); // Това връща NodeList. Само ,че тук сме взели всички  tr в table.
+            // NodeList тип обект , който прилича на масив. на [0] e първото tr на [1] е второто и т.н.
+        // console.log(table.textContent); Връща текста на всички редове. Ако на реда има няколко ТД ги долепя.
+        // console.log(table);
+        // console.log(tableTwo);
+        // console.log(tableThree.length); // Тук можем да вземем и дължината на масива/обекта/NodeList-a.
+
+        for (let i = 0; i < tableThree.length; i++) {
+            if (i % 2 !== 0)
+                tableThree[i].style.background = "Teal";
+
+        }
+
+
+    }
+</script>
+</body>
+</html>

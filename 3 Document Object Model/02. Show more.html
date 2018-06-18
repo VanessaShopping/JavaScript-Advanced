@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+<p>Paragraph one</p>
+<p>Paragraph two</p>
+<p>Paragraph three</p>
+-->
+Welcome to the "Show More Text Example".
+<a href="#" id="more" onclick="showText()">Read more …</a>
+<span id="text" style="display:none">Welcome to JavaScript and DOM. <b>Bold</b></span>
+<script>
+    function showText() {
+        // TODO
+        let text = document.getElementById('text');
+        let link = document.getElementById('more');
+
+        /*let test = document.getElementsByTagName('p');
+        for (let item of test) {
+            console.log(item.textContent);
+        }
+        for (let item4e in test) { // Връща индексите и след тях още нещо !?!?!? - item , namedItem, lenght*/
+
+
+            text.style.display = 'inline';
+            link.style.display = 'none';
+
+        }
+</script>
+
+
+</body>
+</html>
